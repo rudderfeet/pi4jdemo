@@ -11,4 +11,4 @@ EXPOSE 9080
 ADD target/pi4jdemo-0.0.1-SNAPSHOT.jar app.jar
 
 # Run the jar file and enable remote debugging (not approprite for PRODuction!)
-ENTRYPOINT ["java","-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,address=8001,suspend=y", "-Djava.security.egd=file:/dev/./urandom", "-Dserver.port=9080", "-jar","/app.jar"]
+ENTRYPOINT ["java","-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,address=8001,suspend=n", "-Djava.security.egd=file:/dev/./urandom", "-Dserver.port=9080", "-jar","/app.jar"]
