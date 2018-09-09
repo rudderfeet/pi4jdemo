@@ -2,7 +2,7 @@
 FROM openjdk:8-jdk-alpine
 
 # Add Maintainer Info
-LABEL maintainer="scott@mccrory.us"
+LABEL maintainer="Scott McCrory <scott@mccrory.us>"
 
 # Make port 9080 available to the world outside this container
 EXPOSE 9080
@@ -10,5 +10,5 @@ EXPOSE 9080
 # Add the application's jar to the container
 ADD target/pi4jdemo-0.0.1-SNAPSHOT.jar app.jar
 
-# Run the jar file 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", "-Dserver.port=9080", "-jar","/app.jar"]
+# Run the jar file and enable remote debugging (not approprite for PRODuction!)
+ENTRYPOINT ["java","-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,address=8001,suspend=y", "-Djava.security.egd=file:/dev/./urandom", "-Dserver.port=9080", "-jar","/app.jar"]
