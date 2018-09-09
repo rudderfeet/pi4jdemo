@@ -1,50 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<!-- Basic Maven coordinates -->
 	<groupId>us.mccrory</groupId>
 	<artifactId>pi4jdemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
 	<name>pi4jdemo</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Demo project for Spring Boot + Docker + Pi4j</description>
 
+	<!-- Leverage the Spring Boot starter parent -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
+	<!-- Properties to make maintenance of versions easier down the road -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
 
+	<!-- Project library dependencies -->
 	<dependencies>
-	
+
+		<!-- Core Spring Boot/Framework dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
 
+		<!-- Needed to make testing of Spring Boot applications easier -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
+		<!-- Provides an excellent Java wrapper around Raspberry Pi-specific functions -->
 		<dependency>
-		    <groupId>com.pi4j</groupId>
-		    <artifactId>pi4j-core</artifactId>
-		   <version>1.2-SNAPSHOT</version>
+			<groupId>com.pi4j</groupId>
+			<artifactId>pi4j-core</artifactId>
+			<version>1.2-SNAPSHOT</version>
 		</dependency>
 
 	</dependencies>
-	
+
+	<!-- Sonatype has a repo of some very nice libraries that may come in handy here -->
 	<repositories>
 		<repository>
 			<id>oss-snapshots-repo</id>
@@ -57,6 +74,7 @@
 		</repository>
 	</repositories>
 
+	<!-- Bind Spring Boot with the Maven build lifecycle phases -->
 	<build>
 		<plugins>
 			<plugin>
@@ -65,6 +83,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

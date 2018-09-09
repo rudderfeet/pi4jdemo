@@ -9,4 +9,5 @@ public class Pi4jdemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Pi4jdemoApplication.class, args);
 	}
+
 }
