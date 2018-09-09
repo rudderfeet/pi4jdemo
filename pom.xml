@@ -25,6 +25,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<dockerfile-maven-version>1.4.4</dockerfile-maven-version>
 	</properties>
 
 	<!-- Project library dependencies -->
@@ -61,7 +62,8 @@
 
 	</dependencies>
 
-	<!-- Sonatype has a repo of some very nice libraries that may come in handy here -->
+	<!-- Sonatype has a repo of some very nice libraries that may come in handy 
+		here -->
 	<repositories>
 		<repository>
 			<id>oss-snapshots-repo</id>
@@ -81,7 +83,36 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>${dockerfile-maven-version}</version>
+				
+				<configuration>
+					<repository>${project.artifactId}</repository>
+					<tag>${project.version}</tag>
+					<buildArgs>
+						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
+				</configuration>
+				
+				<!-- Unremark this to bind the creation of a Docker image with Maven builds and pushes
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+				 -->
+				 
+			</plugin>
+			
 		</plugins>
+
 	</build>
 
 </project>
