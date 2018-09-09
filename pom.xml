@@ -80,9 +80,15 @@
 	<!-- Bind Spring Boot with the Maven build lifecycle phases -->
 	<build>
 		<plugins>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<jvmArguments>
+						-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8001 -Djava.security.egd=file:/dev/./urandom -Dserver.port=9080
+					</jvmArguments>
+				</configuration>
 			</plugin>
 
 			<plugin>
