@@ -4,9 +4,6 @@ FROM openjdk:8-jdk-alpine
 # Add Maintainer Info
 LABEL maintainer="scott@mccrory.us"
 
-# Add a volume pointing to /tmp
-VOLUME /tmp
-
 # Make port 9080 available to the world outside this container
 EXPOSE 9080
 
