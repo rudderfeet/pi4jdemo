@@ -4,8 +4,8 @@ FROM openjdk:8-jdk-alpine
 # Add Maintainer Info
 LABEL maintainer="Scott McCrory <scott@mccrory.us>"
 
-# Make port 9080 available to the world outside this container
-EXPOSE 9080
+# Make ports 8001 and 9080 available to the world outside this container
+EXPOSE 8001 9080
 
 # Add the application's jar to the container
 ADD target/pi4jdemo-0.0.1-SNAPSHOT.jar app.jar
