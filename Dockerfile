@@ -8,8 +8,8 @@ MAINTAINER Scott McCrory <scott@mccrory.us>
 ADD target/pi4jdemo-0.0.1-SNAPSHOT.jar app.jar
 
 # Update the images' libraries with any latest security patches, etc.
-RUN apk update
-RUN apk upgrade
+#RUN apk update
+#RUN apk upgrade
 
 # Make ports 8001 and 9080 available to the world outside this container
 EXPOSE 8001
