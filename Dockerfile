@@ -1,13 +1,14 @@
-# Start with a base image containing Java runtime
+# Start with a base image containing a Java runtime
 FROM hypriot/rpi-java
 
 # Add Maintainer Info
-MAINTAINER Scott McCrory <scott@mccrory.us>
+LABEL maintainer="Scott McCrory <scott@mccrory.us>"
 
 # Add the application's jar to the container
 ADD target/pi4jdemo-0.0.1-SNAPSHOT.jar /opt/app.jar
 
 # Update the images' libraries with any latest security patches, etc.
+# Note that this adds build time that you may not want on a slow Pi
 #RUN apk update
 #RUN apk upgrade
 

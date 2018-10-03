@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Pi4jdemoApplication<pi4jdemo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "us.mccrory.pi4jdemo.Pi4jdemoApplication",
+            "projectName": "pi4jdemo",
+            "args": ""
+        }
+    ]
+}
