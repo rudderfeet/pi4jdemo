@@ -8,7 +8,7 @@ LABEL maintainer="Scott McCrory <scott@mccrory.us>"
 ARG JAR_FILE=target/pi4jdemo-0.0.1-SNAPSHOT.jar
 
 # Add the application's jar to the container
-ADD ${JAR_FILE} /opt/app.jar
+ADD ${JAR_FILE} app.jar
 
 # Update the images' libraries with any latest security patches, etc.
 # Note that this adds build time that you may not want on a slow Pi
@@ -20,4 +20,4 @@ EXPOSE 8001
 EXPOSE 9080
 
 # Run the jar file and enable remote debugging (not approprite for PRODuction!)
-ENTRYPOINT ["java","-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,address=8001,suspend=n", "-Djava.security.egd=file:/dev/./urandom", "-Dserver.port=9080", "-jar","/opt/app.jar"]
+ENTRYPOINT ["java","-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,address=8001,suspend=n", "-Djava.security.egd=file:/dev/./urandom", "-Dserver.port=9080", "-jar","app.jar"]
