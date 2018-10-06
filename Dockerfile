@@ -4,11 +4,8 @@ FROM openjdk:8-jdk-alpine
 # Add Maintainer Info
 LABEL maintainer="Scott McCrory <scott@mccrory.us>"
 
-# The application's jar file
-ARG JAR_FILE=target/pi4jdemo-0.0.1-SNAPSHOT.jar
-
 # Add the application's jar to the container
-ADD ${JAR_FILE} app.jar
+ADD target/pi4jdemo-0.0.1-SNAPSHOT.jar app.jar
 
 # Update the images' libraries with any latest security patches, etc.
 # Note that this adds build time that you may not want on a slow Pi
