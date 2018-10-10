@@ -12,9 +12,8 @@ ADD target/pi4jdemo-0.0.1-SNAPSHOT.jar app.jar
 #RUN apk update
 #RUN apk upgrade
 
-# Make ports 9080 (app) and 8001 (debug) available to the world outside this container
+# Make port 8001 (debug) available to the world outside this container
 EXPOSE 8001
-EXPOSE 9080
 
 # Run the jar file and enable remote debugging (not approprite for PRODuction!)
 ENTRYPOINT ["java","-Xdebug", "-Xrunjdwp:transport=dt_socket,server=y,address=8001,suspend=n", "-Djava.security.egd=file:/dev/./urandom", "-Dserver.port=9080", "-jar","/app.jar"]
