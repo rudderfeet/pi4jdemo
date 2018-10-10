@@ -101,18 +101,6 @@
 						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>
 				</configuration>
-				
-				<!-- Unremark this to bind the creation of a Docker image with Maven builds and pushes
-				<executions>
-					<execution>
-						<id>default</id>
-						<goals>
-							<goal>build</goal>
-							<goal>push</goal>
-						</goals>
-					</execution>
-				</executions>
-				 -->
 				 
 			</plugin>
 			
