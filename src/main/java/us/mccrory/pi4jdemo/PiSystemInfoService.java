@@ -8,11 +8,22 @@ import com.pi4j.platform.PlatformManager;
 import com.pi4j.system.NetworkInfo;
 import com.pi4j.system.SystemInfo;
 
+/**
+ * Does work with pi4j's SystemInfo details.
+ */
 @Service
 public class PiSystemInfoService {
 
+	/**
+	 * An slf4j logging object for this class.
+	 */
 	private static Logger LOG = LoggerFactory.getLogger(PiSystemInfoService.class);
 
+	/**
+	 * Logs whatever SystemInfo that pi4j can extract from the runtime environment.
+	 * The bazillion try-catch blocks are simply there to keep going if any errors
+	 * are encountered, so as to pull as much as we can each time.
+	 */
 	public void getPiSystemStatus() {
 
 		// display a few of the available system information properties
