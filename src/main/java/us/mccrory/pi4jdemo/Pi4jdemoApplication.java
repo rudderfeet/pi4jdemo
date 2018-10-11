@@ -19,10 +19,16 @@ public class Pi4jdemoApplication implements CommandLineRunner {
 	private static Logger LOG = LoggerFactory.getLogger(Pi4jdemoApplication.class);
 
 	/**
-	 * An auto-injected PiSystemInfoService to make this app slightly less monolithic.
+	 * An auto-injected PiSystemInfoService to log hardware, OS and VM info.
 	 */
 	@Autowired
 	private PiSystemInfoService piSystemInfoService;
+	
+	/**
+	 * An auto-injected PiBlinkService to toggle GPIO pins.
+	 */
+	@Autowired
+	private PiBlinkService piBlinkService;
 
 	/**
 	 * Pi4jdemoApplication's primary entry point.
@@ -43,15 +49,9 @@ public class Pi4jdemoApplication implements CommandLineRunner {
 
 		// Print to log whatever we can find out about the runtime environment.
 		piSystemInfoService.getPiSystemStatus();
-
-		if (args != null && args.length > 0 && args[0].startsWith("--runonce")) {
-			System.exit(0);
-		} else {
-			while(true) {
-				// Wait 10 seconds
-				Thread.sleep(10000);
-			}
-		}
+		
+		// Toggle GPIO pins.
+		piBlinkService.blink();
 
 	}
 
