@@ -1,7 +1,7 @@
 node {
 
     /**
-     * pi4jdemo's Jenkins pipeline stage definitions
+     * pi4jdemo's Jenkins pipeline stage definitions for DOCKER deployments.
      */
 
     // Clone the project from its Git SCM source.
@@ -18,7 +18,7 @@ node {
     // Maven plugin to generate the image; We skip tests
     // because they were already performed in the compile stage.
     stage ("Docker Image Build") {
-        sh "sudo mvn dockerfile:build -DskipTests=true"
+        sh "sudo mvn dockerfile:build -Ddockerfile.contextDirectory=src/main/resources/deployment/docker -DskipTests=true"
     }
     
     // Stop and remove any existing same-named containers to

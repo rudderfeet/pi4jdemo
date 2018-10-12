@@ -1,0 +1,26 @@
+node {
+
+    /**
+     * pi4jdemo's Jenkins pipeline stage definitions for NATIVE deployments.
+     */
+
+    // Clone the project from its Git SCM source.
+    stage ("Git Clone") {
+        git 'https://github.com/rudderfeet/pi4jdemo.git'
+    }
+   
+    // Compile and test the application.
+    stage ("Compile and Test") {
+        sh "mvn clean package"
+    }
+
+    // Run the refreshed image as a container; Note that we
+    // tell Docker to restart it upon failure or reboot and to
+    // make the debug port of 8001 and the application web server
+    // port (if setup to listen) available to the host machine.
+    stage("Run Application") {
+        sh "mvn spring-boot:run"
+        sh "echo 'A running pi4jdemo app should soon be available for remote debugging on port 8001.'"
+    }
+
+}
