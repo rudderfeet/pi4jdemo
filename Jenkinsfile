@@ -1,0 +1,48 @@
+node {
+
+    /**
+     * pi4jdemo's Jenkins pipeline stage definitions
+     */
+
+    // Clone the project from its Git SCM source.
+    stage ("Git Clone") {
+        git 'https://github.com/rudderfeet/pi4jdemo.git'
+    }
+   
+    // Compile and test the application.
+    stage ("Compile and Test") {
+        sh "mvn clean package"
+    }
+
+    // Perform a Docker image build; Note that we use Spotify's
+    // Maven plugin to generate the image; We skip tests
+    // because they were already performed in the compile stage.
+    stage ("Docker Image Build") {
+        sh "sudo mvn dockerfile:build -DskipTests=true"
+    }
+    
+    // Stop and remove any existing same-named containers to
+    // avoid duplicates and port contention.
+    stage ("Stop and Remove Existing Containers") {
+        sh "sudo docker stop pi4jdemo || true"
+        sh "sudo docker rm pi4jdemo || true"
+    }
+
+    // Run the refreshed image as a container; Note that we
+    // tell Docker to restart it upon failure or reboot and to
+    // make the debug port of 8001 and the application web server
+    // port (if setup to listen) available to the host machine.
+    stage("Run Refreshed Container") {
+        sh "sudo docker run -d --restart=always -p 8001:8001 -p 9080:9080 --name pi4jdemo pi4jdemo:0.0.1-SNAPSHOT"
+        sh "echo 'A running pi4jdemo container should soon be available for remote debugging on port 8001.'"
+    }
+    
+    // Clean up the target directory; This is necessary because some
+    // of the artifacts are created under sudo and some are not.
+    // You could eliminate this step by running everything or nothing
+    // with sudo.
+    stage("Cleanup") {
+        sh "sudo rm -rf target"
+    }
+
+}
