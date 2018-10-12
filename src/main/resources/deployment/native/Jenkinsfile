@@ -14,12 +14,17 @@ node {
         sh "mvn clean package"
     }
 
+    // Stop the prior deployment if necessary
+    stage("Stop existing process") {
+        sh 'ps | grep pi4jdemo | awk "{print $1}" | xargs kill -9 || true'
+    }
+
     // Run the refreshed image as a container; Note that we
     // tell Docker to restart it upon failure or reboot and to
     // make the debug port of 8001 and the application web server
     // port (if setup to listen) available to the host machine.
     stage("Run Application") {
-        sh "sudo mvn spring-boot:run"
+        sh 'nohup sudo mvn spring-boot:run &'
         sh "echo 'A running pi4jdemo app should soon be available for remote debugging on port 8001.'"
     }
 
