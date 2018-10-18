@@ -11,7 +11,7 @@ node {
    
     // Stop the prior deployment if necessary
     stage("Stop existing process") {
-        sh 'sudo lsof -n -i4TCP:8001 | grep LISTEN | awk "{ print $2 }" | sudo xargs kill'
+        sh 'sudo lsof -n -i4TCP:8001 | grep LISTEN | awk "{ print $2 }" | sudo xargs kill | true'
     }
 
     // Compile and test the application.
