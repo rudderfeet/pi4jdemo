@@ -9,14 +9,14 @@ node {
         git 'https://github.com/rudderfeet/pi4jdemo.git'
     }
    
-    // Compile and test the application.
-    stage ("Compile and Test") {
-        sh "sudo mvn clean package"
-    }
-
     // Stop the prior deployment if necessary
     stage("Stop existing process") {
         sh 'ps | grep spring-boot:run | awk "{print $1}" | xargs kill -9 || true'
+    }
+
+    // Compile and test the application.
+    stage ("Compile and Test") {
+        sh "sudo mvn clean package"
     }
 
     // Run the refreshed image as a container; Note that we
