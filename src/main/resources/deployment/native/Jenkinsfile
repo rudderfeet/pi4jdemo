@@ -16,7 +16,7 @@ node {
 
     // Stop the prior deployment if necessary
     stage("Stop existing process") {
-        sh 'ps | grep pi4jdemo | awk "{print $1}" | xargs kill -9 || true'
+        sh 'ps | grep spring-boot:run | awk "{print $1}" | xargs kill -9 || true'
     }
 
     // Run the refreshed image as a container; Note that we

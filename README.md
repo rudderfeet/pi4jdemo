@@ -6,12 +6,12 @@ A simple Pi4J demonstrator using Spring Boot and Docker.
 
 This project is for Java developers who'd like to stretch out a bit and play
 with "physical computing" on an inexpensive Raspberry Pi with many of the same
-tools they already know instead of learning Python and so on.  It's also a way to
-build experience with Spring Boot and app containerization with Docker, again
-building upon a stable knowledge platform a step at a time.
+tools they already know.  It's a great way to build experience with Spring Boot
+and app containerization with Docker, again building upon a stable knowledge
+platform a step at a time.
 
-I recommend having a couple years of experience working with Java and Spring
-and some Linux command line skills.  It's helpful to also know what Docker is,
+I recommend coming with a couple years of experience working with Java and Spring
+and some Linux commandline skills.  It's also helpful to know what Docker is,
 what Jenkins is, and how to get a Raspberry Pi running and connected to your network.
 
 Note that because the Raspberry Pi isn't super fast or have a ton of memory, we
@@ -32,19 +32,13 @@ into the Pi's local Maven repo.
 
 ### Installing
 
-Detailed instructions forthcoming in a Powerpoint presentation meant to go along with a
-public talk/lunch-and-learn.  Bascially we set up the Pi, install Java, Maven,
-Docker, Jenkins and several plugins, then we create a build job that either pulls
-this project or your extension.  On the development PC side, you'll want your favorite
-IDE/editor, a Git client and Java and Maven installed.  Docker on the dev PC can also
-be helpful for testing image construction, but is not absolutely necessary.
-
-## Running the tests
-
-There aren't many unit tests run during build (see below), just a check of Spring's context
-loader. If/as you build upon this for your own purposes, you'll likely need to be mindful
-of what can't be run on your development PC because it lacks the Pi's GPIO, camera and any
-cool electronics you end up wirings to the Pi.
+Detailed instructions can be found in this Powerpoint presentation
+(https://github.com/rudderfeet/pi4jdemo/blob/master/Columbus%20Code%20Camp%20-%20Java%20on%20the%20Raspberry%20Pi%20-%202018-10-27.pptx)
+meant to go along with a public talk/lunch-and-learn.  Bascially we set up the Pi,
+install Java, Maven, Docker, Jenkins and several plugins, then we create a build job
+that either pulls this project or your extension.  On the development PC side, you'll
+want your favorite IDE/editor, a Git client and Java and Maven installed.  Docker on
+the dev PC can also be helpful for testing image construction, but is not absolutely necessary.
 
 ## Deployment
 
