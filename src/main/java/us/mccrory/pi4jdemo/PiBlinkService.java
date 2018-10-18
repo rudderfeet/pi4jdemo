@@ -56,17 +56,15 @@ public class PiBlinkService {
 		// continuously blink the led every 1 second
 		led1.blink(1000);
 
-		LOG.info(" ... The LED will continue blinking until the program is terminated.");
+		LOG.info(" ... The LED will continue blinking for two minutes...");
 		LOG.info(" ... PRESS <CTRL-C> TO STOP THE PROGRAM.");
 
 		// keep program running until user aborts (CTRL-C)
-		while (true) {
-			Thread.sleep(500);
-		}
+		Thread.sleep(120000);
 
 		// Stop all GPIO activity/threads
 		// (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
-		// gpio.shutdown();   <--- implement this method call if you wish to terminate the Pi4J GPIO controller
+		// gpio.shutdown();  // <--- implement this method call if you wish to terminate the Pi4J GPIO controller
 
 	}
 
