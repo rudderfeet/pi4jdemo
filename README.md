@@ -32,8 +32,7 @@ into the Pi's local Maven repo.
 
 ### Installing
 
-Detailed instructions can be found in this Powerpoint presentation
-(https://github.com/rudderfeet/pi4jdemo/blob/master/Columbus%20Code%20Camp%20-%20Java%20on%20the%20Raspberry%20Pi%20-%202018-10-27.pptx)
+Detailed instructions can be found in [this Powerpoint presentation](https://github.com/rudderfeet/pi4jdemo/blob/master/Columbus%20Code%20Camp%20-%20Java%20on%20the%20Raspberry%20Pi%20-%202018-10-27.pptx)
 meant to go along with a public talk/lunch-and-learn.  Bascially we set up the Pi,
 install Java, Maven, Docker, Jenkins and several plugins, then we create a build job
 that either pulls this project or your extension.  On the development PC side, you'll
@@ -54,8 +53,8 @@ We've also mixed in Spotify's Docker Maven plugin, so you can:
 ## Built With
 
 * [Maven](https://maven.apache.org/) - Dependency Management
-* [Spring Boot] (http://spring.io/projects/spring-boot) - IoC Framework
-* [Docker] (https://www.docker.com/) - Container manager
+* [Spring Boot](http://spring.io/projects/spring-boot) - IoC Framework
+* [Docker](https://www.docker.com/) - Container manager
 
 ## Contributing
 
