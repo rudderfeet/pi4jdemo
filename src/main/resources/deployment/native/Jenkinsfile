@@ -11,7 +11,7 @@ node {
    
     // Stop the prior deployment if necessary
     stage("Stop existing process") {
-        sh 'ps | grep spring-boot:run | awk "{print $1}" | xargs kill -9 || true'
+        sh 'sudo lsof -n -i4TCP:8001 | grep LISTEN | awk "{ print $2 }" | sudo xargs kill'
     }
 
     // Compile and test the application.
