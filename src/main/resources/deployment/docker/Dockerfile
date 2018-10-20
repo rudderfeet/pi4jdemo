@@ -1,4 +1,4 @@
-# Start with a slender Alpine Linus base image with OpenJDK JRE
+# Start with a slender Alpine Linux base image with the OpenJDK JRE
 FROM openjdk:8-jre-alpine
 
 # Add a bash interpreter in case we want to interactively login to the container
