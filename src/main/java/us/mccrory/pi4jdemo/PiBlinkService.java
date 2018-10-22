@@ -35,10 +35,10 @@ public class PiBlinkService {
 		final GpioController gpio = GpioFactory.getInstance();
 
 		// provision gpio pin #05 as an output pin and blink
-		final GpioPinDigitalOutput led = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05);
+		final GpioPinDigitalOutput led = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00);
 
 		// provision gpio pin #06 as an input pin with its internal pull down resistor enabled
-		final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_06, PinPullResistance.PULL_DOWN);
+		final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_02, PinPullResistance.PULL_DOWN);
 
 		// create and register gpio pin listener
 		myButton.addListener(new GpioPinListenerDigital() {
