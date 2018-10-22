@@ -34,27 +34,27 @@ public class PiBlinkService {
 		// create gpio controller
 		final GpioController gpio = GpioFactory.getInstance();
 
-		// provision gpio pin #01 & #03 as an output pins and blink
-		final GpioPinDigitalOutput led1 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01);
+		// provision gpio pin #05 as an output pin and blink
+		final GpioPinDigitalOutput led = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05);
 
-		// provision gpio pin #02 as an input pin with its internal pull down resistor enabled
-		final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_02, PinPullResistance.PULL_DOWN);
+		// provision gpio pin #06 as an input pin with its internal pull down resistor enabled
+		final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_06, PinPullResistance.PULL_DOWN);
 
 		// create and register gpio pin listener
 		myButton.addListener(new GpioPinListenerDigital() {
 			@Override
 			public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
-				// when button is pressed, speed up the blink rate on LED #2
+				// when button is pressed, speed up the blink rate on LED
 				if (event.getState().isHigh()) {
-					led1.blink(200);
+					led.blink(200);
 				} else {
-					led1.blink(1000);
+					led.blink(1000);
 				}
 			}
 		});
 
 		// continuously blink the led every 1 second
-		led1.blink(1000);
+		led.blink(1000);
 
 		LOG.info(" ... The LED will continue blinking until stopped...");
 		LOG.info(" ... PRESS <CTRL-C> TO STOP THE PROGRAM.");
