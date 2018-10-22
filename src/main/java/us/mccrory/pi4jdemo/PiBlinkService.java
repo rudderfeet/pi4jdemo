@@ -46,8 +46,10 @@ public class PiBlinkService {
 			public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
 				// when button is pressed, speed up the blink rate on LED
 				if (event.getState().isHigh()) {
+					LOG.info("HIGH button");
 					led.blink(200);
 				} else {
+					LOG.info("LOW button");
 					led.blink(1000);
 				}
 			}
