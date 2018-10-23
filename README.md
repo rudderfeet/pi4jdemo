@@ -2,6 +2,9 @@
 
 A simple Pi4J demonstrator using Spring Boot and Docker.
 
+## Glamor Shot
+![p4jdemo](pi4jdemo_glamor_shot.jpg)
+
 ## Getting Started
 
 This project is for Java developers who'd like to stretch out a bit and play
